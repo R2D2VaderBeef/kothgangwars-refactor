@@ -5,7 +5,9 @@ const port = process.env.PORT || 4200;
 
 // logging requests, always keep on top
 app.use(function (req, res, next) {
-  console.log("Request recieved at " + Date.now() + " from " + req.ip);
+  console.log(
+    "Request recieved at " + Date.now() + " to " + req.url + " from " + req.ip
+  );
   next();
 });
 app.use(bodyParser.json());
