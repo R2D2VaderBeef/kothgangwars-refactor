@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Input</title>
+<style>
+ th, td {
+  border: 1px solid black;
+ } 
+</style>
+</head>
+<body>
+  <h1>Update Player Information</h1>
+  <p1>Do the maths and then enter values here to update them! Only enter what you want to change</p1>
+
+    <form class="form" id="testform">
+        <label for="name">Player Name</label><br>
+        <input type="text" name="name" id="name"> <br>
+
+        <label for="points">Game Points</label><br>
+        <input type="text" name="points" id="points"> <br>
+
+        <label for="sets">Sets Played</label><br>
+        <input type="text" name="sets" id="sets"> <br>
+
+        <label for="wins">Game Wins</label><br>
+        <input type="text" name="wins" id="wins"> <br>
+
+        <label for="losses">Game Losses</label><br>
+        <input type="text" name="losses" id="losses"> <br>
+
+        <label for="bonuses">Bonuses</label><br>
+        <input type="text" name="bonuses" id="bonuses"> <br>
+
+        <label for="total">Total Points</label><br>
+        <input type="text" name="total" id="total"> <br>
+
+        <label for="strikes">STRIKES</label><br>
+        <input type="text" name="strikes" id="strikes"> <br>
+
+        <label for="password">Authorize Access</label><br>
+        <input type="password" name="password" id="password" style="width: 1230px;">
+
+        <button type="submit">Submit</button>
+      </form>
+
+      <script>
+        const testform = document.getElementById("testform");
+        console.log("Got form");
+
+
+        testform.addEventListener('submit', async function(e){
+          e.preventDefault();
+          console.log("Sent Request");
+
+          var playername = document.getElementById('name').value.toLowerCase();
+
+          const data = {name: playername,
+                          points: document.getElementById('points').value,
+                          sets: document.getElementById('sets').value,
+                          wins: document.getElementById('wins').value,
+                          losses: document.getElementById('losses').value,
+                          bonuses: document.getElementById('bonuses').value,
+                          total: document.getElementById('total').value,
+                          strikes: document.getElementById('strikes').value,
+                          auth: document.getElementById('password').value};
+
+          const options = {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+          };
+
+          const response = await fetch('/player', options);
+          const resdata = await response.json();
+          console.log(resdata);
+          if (resdata == "Unauthorized"){document.getElementById('password').value = ""}
+          else {
+            document.getElementById('name').value = ""
+            document.getElementById('points').value = ""
+            document.getElementById('sets').value = ""
+            document.getElementById('wins').value = ""
+            document.getElementById('losses').value = ""
+            document.getElementById('bonuses').value = ""
+            document.getElementById('total').value = ""
+            document.getElementById('strikes').value = ""
+          }
+        });
+      </script>
+
+      <h1><br>Get player data</h1>
+
+          <form class="form" id="form2">
+
+            <label for="lookupname">Player Name</label><br>
+            <input type="text" name="lookupname" id="lookupname"> <br>
+            <button type="submit">Submit</button>
+
+          </form>
+          <p1>The resulting data will appear below</p1>
+         
+          <table id="playerdata"> 
+              <tr>
+                <th>Gang Member</th>
+                <th>Game Points</th>
+                <th>Sets Played</th>
+                <th>Game Wins</th>
+                <th>Game Losses</th>
+                <th>Bonuses</th>
+                <th>Total Points</th>
+                <th>STRIKES</th>
+              </tr>
+          </table>
+
+          <script>
+
+            const getform = document.getElementById("form2");
+            console.log("Got form");
+
+
+            getform.addEventListener('submit', async function(e){
+              e.preventDefault();
+              console.log("Sent Request");
+              
+              var lookupname = document.getElementById("lookupname").value.toLowerCase();
+              const data = {name: lookupname};
+
+              const options = {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+              };
+
+              const response = await fetch('/readPlayer', options);
+              const resdata = await response.json();
+              console.log(resdata);
+
+              var table = document.getElementById('playerdata');
+
+              const row = document.createElement('tr');
+              const name = document.createElement('td');
+              const points = document.createElement('td');
+              const sets = document.createElement('td');
+              const wins = document.createElement('td');
+              const losses = document.createElement('td');
+              const bonuses = document.createElement('td');
+              const total = document.createElement('td');
+              const strikes = document.createElement('td');
+
+              name.textContent = resdata.name;
+              points.textContent = resdata.points;
+              sets.textContent = resdata.sets;
+              wins.textContent = resdata.wins;
+              losses.textContent = resdata.losses;
+              bonuses.textContent = resdata.bonuses;
+              total.textContent = resdata.total;
+              strikes.textContent = resdata.strikes;
+
+              row.append(name, points, sets, wins, losses, bonuses, total, strikes);
+              table.appendChild(row);
+
+              });
+              </script>
+      </body>
+
+</html>
