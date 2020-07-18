@@ -22,9 +22,7 @@ app.use(function (req, res, next) {
 });
 app.use(bodyParser.json());
 
-app.use("/", function (req, res) {
-  res.send("index");
-});
+app.use(express.static("public"));
 
 app.listen(port, function () {
   console.log("App listening on Port: " + port);
