@@ -1,0 +1,210 @@
+<!DOCTYPE HTML>
+<HTML lang="en">
+<head>
+<meta property="og:type" content="website">
+<meta property="og:title" content="Home | Mobile Friendly Version">
+<meta property="og:url" content="https://kothgangwars.herokuapp.com/index_mo.html">
+<meta property="og:description" content="The homepage of the premier KOTH team tournament">
+<meta property="og:image" content="https://kothgangwars.herokuapp.com/logo.png">
+<meta property="og:site_name" content="KOTH Unofficial Gang Wars">
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<style>
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 20%;
+  background-color: #52a8db;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+h1 {
+  font-family: Arial, Helvetica, sans-serif;
+  color:#d43e46;
+  font-size: 4rem;
+}
+
+h2 {
+  font-family: Arial, Helvetica, sans-serif;
+  color:white;
+  font-size: 3rem;
+}
+
+p1 {
+  font-family: Arial, Helvetica, sans-serif; 
+  font-size: 1.5rem;   
+  margin-left: 1%;
+}
+
+
+.blue {
+    background-color: #7ac1eb;
+}
+
+table{
+  margin-left:20%;
+}
+
+table, th, td {
+  border: 1px solid black;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size:1.5rem;
+  text-align: center;
+}
+
+th, td{
+    padding: 5px;
+}
+.spacer{
+    height: 20px;
+}
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #52a8db;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-family:Arial, Helvetica, sans-serif;
+  color: #000000;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #d43e46;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+</style>
+
+<title>Home | Mobile Friendly | KOTH Unofficial Gang Wars</title>
+
+<link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+
+</head>
+<body>
+
+
+
+<img src="logo.png" width=20% alt="KOTH Gang Wars Logo" style="float:right">
+<div class="spacer"></div>
+<span style="font-size:1.5rem;font-family:Arial, Helvetica, sans-serif;cursor:pointer;text-align: center;background-color: #52a8db;" onclick="openNav()">&#9776; Menu</span> 
+<script>
+  function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+  }
+  
+  function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+  }
+</script>
+
+
+<div style= "margin-left: 50%;"><p1>Please hold your phone Landscape to best view this page!</p1></div>
+
+<div class="blue">
+  <div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="index_mo.html">Home</a>
+    <a href="lineups_mo.html">Lineups</a>
+    <a href="scoreboard_mo.html">Scoreboard</a>
+    <a href="https://trello.com/b/mZ8fEopu/koth-gang-wars-season-2-calendar/">Calendar</a>
+    <div class="spacer"></div>
+    <a href="input.html">Input</a>
+    <a href="auth.html">Auth</a>
+</div>
+<h1 style="background-color: #52a8db;">KOTH Unofficial Gang Wars</h1>
+<p1>Welcome to the website of the King of the Hat Unofficial Gang Wars! We host the premier KOTH team tourney.<br></p1>
+<p1>Season 2 ended in June 2020, and we have not played any scored matches since.<br></p1>
+<p1>The Scoreboard (find it from the menu) will tell you the scores and stats of every player per-war for Season 2.<br></p1>
+<p1>Below are the final scores for each gang at the end of the Season.</p1>
+<div class="spacer"></div>
+<table>
+    <tr>
+      <th>Gang</th>
+      <th>Points</th>
+      <th>Strikes</th>
+    </tr>
+    <tr>
+      <td>Lime Warriors</td>
+      <td>399</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>The Elite 4 [DISBANDED, so cannot win the Season]</td>
+      <td>370</td>
+      <td>0</td>
+    </tr>
+   <tr>
+      <td>Farm Bois</td>
+      <td>340</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>MostImproved</td>
+      <td>324</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>HAIL THE DEVS</td>
+      <td>219</td>
+      <td>0</td>
+    </tr>
+
+</table>
+
+
+
+<div class="spacer"></div>
+<p1>Don't forget to sub to our official Twitch channel by clicking the image below!<br></p1>
+
+<a href="https://twitch.tv/kothgangwars">
+    <img src="twitch.png" width=15% style="margin-left: 1%;" alt="Twitch logo linking to the channel kothgangwars">
+</a>
+</div>
+
+
+</body>
+</HTML>
+

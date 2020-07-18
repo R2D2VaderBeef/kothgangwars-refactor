@@ -1,0 +1,41 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Send to Discord</title>
+  </head>
+  <body>
+    <script>
+      if (location.protocol === 'http:') {
+    window.location.replace("https" + window.location.href.substring(4));
+    }
+    </script>
+    <form class="form" id="messageform">
+      <label for="message">Enter Message</label> <br>
+      <input type="text" name="message" id="message"> <br>
+      <label for="password">Enter Password</label> <br>
+      <input type="password" name="password" id="password" style="width: 1230px;"> <br>
+      <button type="submit">Send</button>
+    </form>
+    <script>
+      const testform = document.getElementById("messageform");
+
+
+      testform.addEventListener('submit', async function(e){
+        e.preventDefault();
+
+        const data = { auth: document.getElementById('password').value, message: document.getElementById('message').value};
+        const options = {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        };
+        const response = await fetch('/send', options);
+        const resdata = await response.json();
+        console.log(resdata);
+      });
+    </script>
+  </body>
+</html>
