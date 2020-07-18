@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/R2D2VaderBeef/kothgangwars-refactor/issues"
   },
-  "homepage": "https://github.com/R2D2VaderBeef/kothgangwars-refactor#readme"
+  "homepage": "https://github.com/R2D2VaderBeef/kothgangwars-refactor#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
