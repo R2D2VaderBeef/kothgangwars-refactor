@@ -1,5 +1,5 @@
 const express = require("express");
-const body-parser = require('body-parser');
+const bodyParser = require("body-parser");
 const app = express();
 const port = process.env.PORT || 4200;
 
@@ -8,8 +8,7 @@ app.use(function (req, res, next) {
   console.log("Request recieved at " + Date.now() + " from " + req.ip);
   next();
 });
-app.use(bodyParser.json())
-
+app.use(bodyParser.json());
 
 app.use("/", function (req, res, next) {
   res.send("Index");
