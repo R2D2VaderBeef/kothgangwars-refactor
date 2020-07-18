@@ -15,5 +15,4 @@ app.use("/", function(req, res, next) {
 app.use(function(req, res){
   console.log("request ended");
 })
-console.log(process.env.PORT);
-app.listen(process.env.PORT)
+app.listen(process.env.PORT || 4200)
