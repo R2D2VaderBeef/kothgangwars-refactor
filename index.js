@@ -4,7 +4,6 @@ const app = express();
 const interface = require(process.cwd() + "/lib/database/interface.js");
 const port = process.env.PORT || 4200;
 
-console.log(interface.interface());
 // logging requests, always keep on top
 app.use(function (req, res, next) {
   console.log(
@@ -23,6 +22,7 @@ app.use(function (req, res, next) {
   next();
 });
 app.use(bodyParser.json());
+app.use("/interface", interface.interface());
 
 app.use("/", express.static("public/desktop"));
 app.use("/mobile", express.static("public/mobile"));
