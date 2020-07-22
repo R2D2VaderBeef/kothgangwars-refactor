@@ -22,7 +22,8 @@ app.use(function (req, res, next) {
 });
 app.use(bodyParser.json());
 
-app.use(express.static("public"));
+app.use("/", express.static("public/desktop"));
+app.use("/mobile", express.static("public/mobile"));
 
 app.listen(port, function () {
   console.log("App listening on Port: " + port);
