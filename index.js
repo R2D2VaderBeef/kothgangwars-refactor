@@ -1,8 +1,10 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
+const interface = require(process.cwd() + "/lib/database/interface.js");
 const port = process.env.PORT || 4200;
 
+console.log(interface.interface());
 // logging requests, always keep on top
 app.use(function (req, res, next) {
   console.log(
@@ -24,6 +26,10 @@ app.use(bodyParser.json());
 
 app.use("/", express.static("public/desktop"));
 app.use("/mobile", express.static("public/mobile"));
+
+app.use(function (req, res) {
+  res.end();
+});
 
 app.listen(port, function () {
   console.log("App listening on Port: " + port);
