@@ -89,81 +89,72 @@
         });
       </script>
 
-      <h1><br>Get player data</h1>
+<h1><br>Get player data</h1>
 
-          <form class="form" id="form2">
+<form class="form" id="form2">
 
-            <label for="lookupname">Player Name</label><br>
-            <input type="text" name="lookupname" id="lookupname"> <br>
-            <button type="submit">Submit</button>
+  <label for="lookupname">Player Name</label><br>
+  <input type="text" name="lookupname" id="lookupname"> <br>
+  <button type="submit">Submit</button>
 
-          </form>
-          <p1>The resulting data will appear below</p1>
-         
-          <table id="playerdata"> 
-              <tr>
-                <th>Gang Member</th>
-                <th>Game Points</th>
-                <th>Sets Played</th>
-                <th>Game Wins</th>
-                <th>Game Losses</th>
-                <th>Bonuses</th>
-                <th>Total Points</th>
-                <th>STRIKES</th>
-              </tr>
-          </table>
+</form>
+<p1>The resulting data will appear below</p1>
 
-          <script>
+<table id="playerdata"> 
+    <tr>
+      <th>Gang Member</th>
+      <th>Game Points</th>
+      <th>Sets Played</th>
+      <th>Game Wins</th>
+      <th>Game Losses</th>
+      <th>Bonuses</th>
+      <th>Total Points</th>
+      <th>STRIKES</th>
+    </tr>
+</table>
 
-            const getform = document.getElementById("form2");
-            console.log("Got form");
+<script>
+
+  const getform = document.getElementById("form2");
+  console.log("Got form");
 
 
-            getform.addEventListener('submit', async function(e){
-              e.preventDefault();
-              console.log("Sent Request");
-              
-              var lookupname = document.getElementById("lookupname").value.toLowerCase();
-              const data = {name: lookupname};
+  getform.addEventListener('submit', async function(e){
+    e.preventDefault();
+    console.log("Sent Request");
+    
+    var lookupname = document.getElementById("lookupname").value.toLowerCase();
 
-              const options = {
-                method: 'POST',
-                headers: {
-                  'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-              };
+    const response = await fetch('/api/players?name=' + lookupname);
+    const resdata = await response.json();
+    console.log(resdata);
 
-              const response = await fetch('/readPlayer', options);
-              const resdata = await response.json();
-              console.log(resdata);
+    var table = document.getElementById('playerdata');
 
-              var table = document.getElementById('playerdata');
+    const row = document.createElement('tr');
+    const name = document.createElement('td');
+    const points = document.createElement('td');
+    const sets = document.createElement('td');
+    const wins = document.createElement('td');
+    const losses = document.createElement('td');
+    const bonuses = document.createElement('td');
+    const total = document.createElement('td');
+    const strikes = document.createElement('td');
 
-              const row = document.createElement('tr');
-              const name = document.createElement('td');
-              const points = document.createElement('td');
-              const sets = document.createElement('td');
-              const wins = document.createElement('td');
-              const losses = document.createElement('td');
-              const bonuses = document.createElement('td');
-              const total = document.createElement('td');
-              const strikes = document.createElement('td');
+    name.textContent = resdata.name;
+    points.textContent = resdata.points;
+    sets.textContent = resdata.sets;
+    wins.textContent = resdata.wins;
+    losses.textContent = resdata.losses;
+    bonuses.textContent = resdata.bonuses;
+    total.textContent = resdata.total;
+    strikes.textContent = resdata.strikes;
 
-              name.textContent = resdata.name;
-              points.textContent = resdata.points;
-              sets.textContent = resdata.sets;
-              wins.textContent = resdata.wins;
-              losses.textContent = resdata.losses;
-              bonuses.textContent = resdata.bonuses;
-              total.textContent = resdata.total;
-              strikes.textContent = resdata.strikes;
+    row.append(name, points, sets, wins, losses, bonuses, total, strikes);
+    table.appendChild(row);
 
-              row.append(name, points, sets, wins, losses, bonuses, total, strikes);
-              table.appendChild(row);
-
-              });
-              </script>
-      </body>
+    });
+    </script>
+</body>
 
 </html>
