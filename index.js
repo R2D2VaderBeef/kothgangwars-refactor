@@ -5,11 +5,6 @@ const interface = require(process.cwd() + "/lib/database/interface.js");
 const discordBot = require(process.cwd() + "/lib/bot/botmain.js");
 const port = process.env.PORT || 4200;
 
-test();
-async function test() {
-  console.log(await interface.retrieve("susul"));
-}
-
 // logging requests, always keep on top
 app.use(function (req, res, next) {
   console.log(
