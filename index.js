@@ -18,7 +18,7 @@ app.use(function (req, res, next) {
     res.writeHead(301, {
       Location: "https://" + req.headers["host"] + req.url,
     });
-    console.log(req.host);
+    console.log(req.hostname);
   }
   next();
 });
