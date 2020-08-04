@@ -23,7 +23,7 @@ app.use(function (req, res, next) {
   next();
 });
 app.use(bodyParser.json());
-app.use("/interface", interface.router());
+app.use("/api", interface.router());
 
 app.use("/", express.static("public/desktop"));
 app.use("/mobile", express.static("public/mobile"));
