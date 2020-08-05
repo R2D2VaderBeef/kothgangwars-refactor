@@ -57,52 +57,48 @@
           var dataarray = [];
 
           if (document.getElementById('points').value != "") {
-            gamepoints = document.getElementById('points');
+            gamepoints = document.getElementById('points').value;
             positionsarray.push("gamepoints");
             dataarray.push(gamepoints);
           }
 
           if (document.getElementById('sets').value != "") {
-            setsplayed = document.getElementById('sets');
+            setsplayed = document.getElementById('sets').value;
             positionsarray.push("setsplayed");
             dataarray.push(setsplayed);
           }
 
           if (document.getElementById('wins').value != "") {
-            gamewins = document.getElementById('wins');
+            gamewins = document.getElementById('wins').value;
             positionsarray.push("gamewins");
             dataarray.push(gamewins);
           }
 
           if (document.getElementById('losses').value != "") {
-            gamelosses = document.getElementById('losses');
+            gamelosses = document.getElementById('losses').value;
             positionsarray.push("gamelosses");
             dataarray.push(gamelosses);
           }
 
           if (document.getElementById('bonuses').value != "") {
-            bonuses = document.getElementById('bonuses');
-            positionsarray.push("bonuses");
-            dataarray.push(bonuses);
-          }
-
-          if (document.getElementById('bonuses').value != "") {
-            bonuses = document.getElementById('bonuses');
+            bonuses = document.getElementById('bonuses').value;
             positionsarray.push("bonuses");
             dataarray.push(bonuses);
           }
 
           if (document.getElementById('total').value != "") {
-            totalpoints = document.getElementById('total');
+            totalpoints = document.getElementById('total').value;
             positionsarray.push("totalpoints");
             dataarray.push(totalpoints);
           }
 
           if (document.getElementById('strikes').value != "") {
-            strikes = document.getElementById('strikes');
+            strikes = document.getElementById('strikes').value;
             positionsarray.push("strikes");
             dataarray.push(strikes);
           }
+
+          console.log("Player name: " + playername + " and Positions: " + positionsarray + " and Data: " + dataarray + " and Auth: " + document.getElementById('password').value);
 
           const data = {
                       name: playername,
@@ -111,6 +107,7 @@
                       auth: document.getElementById('password').value,
                        }; 
                       
+          console.log("Data: " + JSON.stringify(data));
 
           const options = {
             method: 'POST',
@@ -119,7 +116,8 @@
             },
             body: JSON.stringify(data)
           };
-
+          
+          
           const response = await fetch('/api/updatePlayer', options);
           const resdata = await response.json();
           console.log(resdata);
@@ -191,14 +189,14 @@
               const total = document.createElement('td');
               const strikes = document.createElement('td');
 
-              name.textContent = resdata.playername;
-              points.textContent = resdata.gamepoints;
-              sets.textContent = resdata.setsplayed;
-              wins.textContent = resdata.gamewins;
-              losses.textContent = resdata.gamelosses;
-              bonuses.textContent = resdata.bonuses;
-              total.textContent = resdata.totalpoints;
-              strikes.textContent = resdata.strikes;
+              name.textContent = resdata[0].playername;
+              points.textContent = resdata[0].gamepoints;
+              sets.textContent = resdata[0].setsplayed;
+              wins.textContent = resdata[0].gamewins;
+              losses.textContent = resdata[0].gamelosses;
+              bonuses.textContent = resdata[0].bonuses;
+              total.textContent = resdata[0].totalpoints;
+              strikes.textContent = resdata[0].strikes;
 
               row.append(name, points, sets, wins, losses, bonuses, total, strikes);
               table.appendChild(row);

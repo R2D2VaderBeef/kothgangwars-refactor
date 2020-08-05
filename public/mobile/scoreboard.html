@@ -258,13 +258,13 @@ th, td{
  console.log(resdata);
  
  
- points.textContent = resdata.points;
- sets.textContent = resdata.sets;
- wins.textContent = resdata.wins;
- losses.textContent = resdata.losses;
- bonuses.textContent = resdata.bonuses;
- total.textContent = resdata.total;
- strikes.textContent = resdata.strikes;
+ points.textContent = resdata[0].gamepoints;
+ sets.textContent = resdata[0].setsplayed;
+ wins.textContent = resdata[0].gamewins;
+ losses.textContent = resdata[0].gamelosses;
+ bonuses.textContent = resdata[0].bonuses;
+ total.textContent = resdata[0].totalpoints;
+ strikes.textContent = resdata[0].strikes;
  console.log("Displayed Data for " + lookupname);
  }
 
@@ -334,7 +334,7 @@ th, td{
  totalcell.textContent = grandtotal;
  strikescell.textContent = totalstrikes;
  console.log("Successfully inputted total values into their respective cells.")
-
+ getData2();
  }
 
  </script>
@@ -354,7 +354,7 @@ th, td{
     <th>STRIKES</th>
   </tr>
   <tr>
-    <td>Member1</td>
+    <td>Member5</td>
     <td>0</td>
     <td>0</td>
     <td>0</td>
@@ -364,7 +364,7 @@ th, td{
     <td>0</td>
   </tr>
   <tr>
-    <td>Member2</td>
+    <td>Member6</td>
     <td>0</td>
     <td>0</td>
     <td>0</td>
@@ -374,7 +374,7 @@ th, td{
     <td>0</td>
   </tr>
   <tr>
-    <td>Member3</td>
+    <td>Member7</td>
     <td>0</td>
     <td>0</td>
     <td>0</td>
@@ -384,7 +384,7 @@ th, td{
     <td>0</td>
   </tr>
   <tr>
-    <td>Member4</td>
+    <td>Member8</td>
     <td>0</td>
     <td>0</td>
     <td>0</td>
@@ -408,10 +408,10 @@ th, td{
 </table>
 
 <script>
-  console.log("Started getData");
- getData();
- async function getData() {
-   const table = document.getElementById("scoretable1");
+
+ async function getData2() {
+  console.log("Started getData2");
+   const table = document.getElementById("scoretable2");
  const rows = table.rows;
  for (i = 1; i < (rows.length - 1); i++) {
  
@@ -434,13 +434,13 @@ th, td{
  console.log(resdata);
  
  
- points.textContent = resdata.points;
- sets.textContent = resdata.sets;
- wins.textContent = resdata.wins;
- losses.textContent = resdata.losses;
- bonuses.textContent = resdata.bonuses;
- total.textContent = resdata.total;
- strikes.textContent = resdata.strikes;
+ points.textContent = resdata[0].gamepoints;
+ sets.textContent = resdata[0].setsplayed;
+ wins.textContent = resdata[0].gamewins;
+ losses.textContent = resdata[0].gamelosses;
+ bonuses.textContent = resdata[0].bonuses;
+ total.textContent = resdata[0].totalpoints;
+ strikes.textContent = resdata[0].strikes;
  console.log("Displayed Data for " + lookupname);
  }
 
