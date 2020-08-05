@@ -2,7 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
 const interface = require(process.cwd() + "/lib/database/interface.js");
-// const discordBot = require(process.cwd() + "/lib/bot/botmain.js"); commented out cuz broken
+const discordBot = require(process.cwd() + "/lib/bot/botmain.js");
 const port = process.env.PORT || 4200;
 
 // logging requests, always keep on top
