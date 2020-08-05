@@ -104,6 +104,8 @@
             dataarray.push(strikes);
           }
 
+          console.log("Player name: " + playername + " and Positions: " + positionsarray + " and Data: " + dataarray + " and Auth: " + document.getElementById('password').value);
+
           const data = {
                       name: playername,
                       positions: positionsarray,
@@ -111,7 +113,8 @@
                       auth: document.getElementById('password').value,
                        }; 
                       
-
+          console.log("Data: " + data);
+          
           const options = {
             method: 'POST',
             headers: {
@@ -119,7 +122,8 @@
             },
             body: JSON.stringify(data)
           };
-
+          
+          
           const response = await fetch('/api/updatePlayer', options);
           const resdata = await response.json();
           console.log(resdata);
