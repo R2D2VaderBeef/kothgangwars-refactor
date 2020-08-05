@@ -2,8 +2,14 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
 const interface = require(process.cwd() + "/lib/database/interface.js");
-const discordBot = require(process.cwd() + "/lib/bot/botmain.js");
+// const discordBot = require(process.cwd() + "/lib/bot/botmain.js"); commented out cuz broken
 const port = process.env.PORT || 4200;
+
+test();
+
+async function test() {
+  console.log(await interface.insert());
+}
 
 // logging requests, always keep on top
 app.use(function (req, res, next) {
