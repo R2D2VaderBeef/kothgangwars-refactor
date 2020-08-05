@@ -8,7 +8,7 @@ const port = process.env.PORT || 4200;
 test();
 
 async function test() {
-  console.log(await interface.insert());
+  console.log(await interface.insert(";", 3, 3));
 }
 
 // logging requests, always keep on top
