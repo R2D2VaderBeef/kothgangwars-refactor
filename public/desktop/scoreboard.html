@@ -339,7 +339,7 @@ th, td{
  totalcell.textContent = grandtotal;
  strikescell.textContent = totalstrikes;
  console.log("Successfully inputted total values into their respective cells.")
-
+ getData2();
  }
 
  </script>
@@ -413,9 +413,9 @@ th, td{
 </table>
 
 <script>
-  console.log("Started getData2");
- getData2();
+
  async function getData2() {
+  console.log("Started getData2");
    const table = document.getElementById("scoretable2");
  const rows = table.rows;
  for (i = 1; i < (rows.length - 1); i++) {
