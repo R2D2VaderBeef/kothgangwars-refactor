@@ -10,16 +10,6 @@ app.use(function (req, res, next) {
   console.log(
     "Request recieved at " + Date.now() + " to " + req.url + " from " + req.ip
   );
-  if (
-    req.protocol == "http" &&
-    req.hostname != "[::1]" &&
-    req.hostname != "127.0.0.1"
-  ) {
-    res.writeHead(301, {
-      Location: "https://" + req.headers["host"] + req.url,
-    });
-    console.log(req.hostname);
-  }
   next();
 });
 app.use(bodyParser.json());
