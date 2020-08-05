@@ -189,14 +189,14 @@
               const total = document.createElement('td');
               const strikes = document.createElement('td');
 
-              name.textContent = resdata.playername;
-              points.textContent = resdata.gamepoints;
-              sets.textContent = resdata.setsplayed;
-              wins.textContent = resdata.gamewins;
-              losses.textContent = resdata.gamelosses;
-              bonuses.textContent = resdata.bonuses;
-              total.textContent = resdata.totalpoints;
-              strikes.textContent = resdata.strikes;
+              name.textContent = resdata[0].playername;
+              points.textContent = resdata[0].gamepoints;
+              sets.textContent = resdata[0].setsplayed;
+              wins.textContent = resdata[0].gamewins;
+              losses.textContent = resdata[0].gamelosses;
+              bonuses.textContent = resdata[0].bonuses;
+              total.textContent = resdata[0].totalpoints;
+              strikes.textContent = resdata[0].strikes;
 
               row.append(name, points, sets, wins, losses, bonuses, total, strikes);
               table.appendChild(row);

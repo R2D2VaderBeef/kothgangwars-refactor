@@ -263,13 +263,13 @@ th, td{
  console.log(resdata);
  
  
- points.textContent = resdata.gamepoints;
- sets.textContent = resdata.setsplayed;
- wins.textContent = resdata.gamewins;
- losses.textContent = resdata.gamelosses;
- bonuses.textContent = resdata.bonuses;
- total.textContent = resdata.totalpoints;
- strikes.textContent = resdata.strikes;
+ points.textContent = resdata[0].gamepoints;
+ sets.textContent = resdata[0].setsplayed;
+ wins.textContent = resdata[0].gamewins;
+ losses.textContent = resdata[0].gamelosses;
+ bonuses.textContent = resdata[0].bonuses;
+ total.textContent = resdata[0].totalpoints;
+ strikes.textContent = resdata[0].strikes;
  console.log("Displayed Data for " + lookupname);
  }
 
@@ -416,7 +416,7 @@ th, td{
   console.log("Started getData");
  getData();
  async function getData() {
-   const table = document.getElementById("scoretable1");
+   const table = document.getElementById("scoretable2");
  const rows = table.rows;
  for (i = 1; i < (rows.length - 1); i++) {
  
@@ -439,13 +439,13 @@ th, td{
  console.log(resdata);
  
  
- points.textContent = resdata.gamepoints;
- sets.textContent = resdata.setsplayed;
- wins.textContent = resdata.gamewins;
- losses.textContent = resdata.gamelosses;
- bonuses.textContent = resdata.bonuses;
- total.textContent = resdata.totalpoints;
- strikes.textContent = resdata.strikes;
+ points.textContent = resdata[0].gamepoints;
+ sets.textContent = resdata[0].setsplayed;
+ wins.textContent = resdata[0].gamewins;
+ losses.textContent = resdata[0].gamelosses;
+ bonuses.textContent = resdata[0].bonuses;
+ total.textContent = resdata[0].totalpoints;
+ strikes.textContent = resdata[0].strikes;
  console.log("Displayed Data for " + lookupname);
  }
 
