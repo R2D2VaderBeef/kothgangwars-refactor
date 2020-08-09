@@ -1,0 +1,5 @@
+Contact: mailto:1337discord@web.de
+Contact: mailto:r2d2vaderbeef@gmail.com
+Contact: Susul#1312 (Discord)
+Preferred-Languages: en, de
+Canonical: https://kothgangwars.herokuapp.com/.well-known/security.txt

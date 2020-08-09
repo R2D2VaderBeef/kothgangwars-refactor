@@ -17,6 +17,7 @@ app.use("/api", interface.router());
 
 app.use("/", express.static("public/desktop"));
 app.use("/mobile", express.static("public/mobile"));
+app.use("/.well-known", express.static("public/well-known"));
 
 app.use(function (req, res) {
   res.end();
