@@ -63,6 +63,22 @@
       .element input:not(:placeholder-shown) + .label-name::after {
         transform: translateX(0%);
       }
+      .button-div {
+        padding-top: 5px;
+        padding-bottom: 10px;
+      }
+      .button {
+        transform: scale(0.8);
+        border: none;
+        transition-duration: 0.4s;
+        background-color: transparent;
+      }
+
+      .button:hover {
+        background-color: cyan; /* Green */
+        color: white;
+        transform: scale(1.2);
+      }
     </style>
   </head>
   <body>
@@ -147,7 +163,9 @@
           ><span class="input-name">Authorize Access</span></label
         >
       </div>
-      <button type="submit">Submit</button>
+      <div class="button-div">
+        <button type="submit" class="button">Submit</button>
+      </div>
     </form>
 
     <script>
@@ -253,9 +271,19 @@
     <h1><br />Get player data</h1>
 
     <form class="form2" id="form2">
-      <label for="lookupname">Player Name</label><br />
-      <input type="text" name="lookupname" id="lookupname" /> <br />
-      <button type="submit">Submit</button>
+      <div class="element">
+        <input
+          type="text"
+          name="lookupname"
+          id="lookupname"
+          placeholder=""
+        /><label for="lookupname" class="label-name"
+          ><span class="input-name">Player Name</span></label
+        >
+      </div>
+      <div class="button-div">
+        <button type="submit" class="button">Submit</button>
+      </div>
     </form>
     <p1>The resulting data will appear below</p1>
 
