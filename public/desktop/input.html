@@ -1,208 +1,317 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<title>Input</title>
-<style>
- th, td {
-  border: 1px solid black;
- } 
-</style>
-</head>
-<body>
-  <h1>Update Player Information</h1>
-  <p1>Do the maths and then enter values here to update them! Only enter what you want to change</p1>
-
+  <head>
+    <title>Input</title>
+    <style>
+      th,
+      td {
+        border: 1px solid black;
+      }
+      body {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-direction: column;
+        font-family: monospace;
+      }
+      .element {
+        font-size: 14px;
+        position: relative;
+        overflow: hidden;
+      }
+      .element input {
+        width: 100%;
+        height: 90%;
+        padding-top: 15px;
+        border: none;
+        padding-bottom: 5px;
+        outline: none;
+      }
+      .element label {
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        height: 90%;
+        width: 100%;
+        pointer-events: none;
+        border-bottom: 1px solid black;
+      }
+      .element label::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 0px;
+        height: 90%;
+        width: 100%;
+        border-bottom: 3px solid cyan;
+        transform: translate(-100%);
+        transition: all 0.5s ease;
+      }
+      .input-name {
+        position: absolute;
+        bottom: 5px;
+        left: 0px;
+        transition: all 0.3s ease;
+      }
+      .element input:focus + .label-name .input-name,
+      .element input:not(:placeholder-shown) + .label-name .input-name {
+        transform: translateY(-120%);
+        font-size: 10px;
+        color: cyan;
+      }
+      .element input:focus + .label-name::after,
+      .element input:not(:placeholder-shown) + .label-name::after {
+        transform: translateX(0%);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Update Player Information</h1>
+    <p1
+      >Do the maths and then enter values here to update them! Only enter what
+      you want to change</p1
+    >
     <form class="form" id="testform">
-        <label for="name">Player Name</label><br>
-        <input type="text" name="name" id="name"> <br>
+      <div class="element">
+        <input type="text" name="name" id="name" placeholder="" /><label
+          for="name"
+          class="label-name"
+          ><span class="input-name">Player Name</span></label
+        >
+        <br />
+      </div>
+      <div class="element">
+        <input type="text" name="points" id="points" placeholder="" /><label
+          for="points"
+          class="label-name"
+          ><span class="input-name">Game Points</span></label
+        >
+        <br />
+      </div>
+      <div class="element">
+        <input type="text" name="sets" id="sets" placeholder="" /><label
+          for="sets"
+          class="label-name"
+          ><span class="input-name">Sets Played</span></label
+        >
+        <br />
+      </div>
+      <div class="element">
+        <input type="text" name="wins" id="wins" placeholder="" /><label
+          for="wins"
+          class="label-name"
+          ><span class="input-name">Game Wins</span></label
+        >
+        <br />
+      </div>
+      <div class="element">
+        <input type="text" name="losses" id="losses" placeholder="" /><label
+          for="losses"
+          class="label-name"
+          ><span class="input-name">Game Losses</span></label
+        >
+        <br />
+      </div>
+      <div class="element">
+        <input type="text" name="bonuses" id="bonuses" placeholder="" /><label
+          for="bonuses"
+          class="label-name"
+          ><span class="input-name">Bonuses</span></label
+        >
+        <br />
+      </div>
+      <div class="element">
+        <input type="text" name="total" id="total" placeholder="" /><label
+          for="total"
+          class="label-name"
+          ><span class="input-name">Total Points</span></label
+        >
+        <br />
+      </div>
+      <div class="element">
+        <input type="text" name="strikes" id="strikes" placeholder="" /><label
+          for="strikes"
+          class="label-name"
+          ><span class="input-name">STRIKES</span></label
+        >
+        <br />
+      </div>
+      <div class="element">
+        <input
+          type="password"
+          name="password"
+          id="password"
+          style="width: 1230px;"
+          placeholder=""
+        /><label for="password" class="label-name"
+          ><span class="input-name">Authorize Access</span></label
+        >
+      </div>
+      <button type="submit">Submit</button>
+    </form>
 
-        <label for="points">Game Points</label><br>
-        <input type="text" name="points" id="points"> <br>
+    <script>
+      const testform = document.getElementById("testform");
+      console.log("Got form");
 
-        <label for="sets">Sets Played</label><br>
-        <input type="text" name="sets" id="sets"> <br>
+      testform.addEventListener("submit", async function (e) {
+        e.preventDefault();
+        console.log("Sent Request");
 
-        <label for="wins">Game Wins</label><br>
-        <input type="text" name="wins" id="wins"> <br>
+        var playername = document.getElementById("name").value.toLowerCase();
+        var positionsarray = [];
+        var dataarray = [];
 
-        <label for="losses">Game Losses</label><br>
-        <input type="text" name="losses" id="losses"> <br>
+        if (document.getElementById("points").value != "") {
+          gamepoints = document.getElementById("points").value;
+          positionsarray.push("gamepoints");
+          dataarray.push(gamepoints);
+        }
 
-        <label for="bonuses">Bonuses</label><br>
-        <input type="text" name="bonuses" id="bonuses"> <br>
+        if (document.getElementById("sets").value != "") {
+          setsplayed = document.getElementById("sets").value;
+          positionsarray.push("setsplayed");
+          dataarray.push(setsplayed);
+        }
 
-        <label for="total">Total Points</label><br>
-        <input type="text" name="total" id="total"> <br>
+        if (document.getElementById("wins").value != "") {
+          gamewins = document.getElementById("wins").value;
+          positionsarray.push("gamewins");
+          dataarray.push(gamewins);
+        }
 
-        <label for="strikes">STRIKES</label><br>
-        <input type="text" name="strikes" id="strikes"> <br>
+        if (document.getElementById("losses").value != "") {
+          gamelosses = document.getElementById("losses").value;
+          positionsarray.push("gamelosses");
+          dataarray.push(gamelosses);
+        }
 
-        <label for="password">Authorize Access</label><br>
-        <input type="password" name="password" id="password" style="width: 1230px;">
+        if (document.getElementById("bonuses").value != "") {
+          bonuses = document.getElementById("bonuses").value;
+          positionsarray.push("bonuses");
+          dataarray.push(bonuses);
+        }
 
-        <button type="submit">Submit</button>
-      </form>
+        if (document.getElementById("total").value != "") {
+          totalpoints = document.getElementById("total").value;
+          positionsarray.push("totalpoints");
+          dataarray.push(totalpoints);
+        }
 
-      <script>
-        const testform = document.getElementById("testform");
-        console.log("Got form");
+        if (document.getElementById("strikes").value != "") {
+          strikes = document.getElementById("strikes").value;
+          positionsarray.push("strikes");
+          dataarray.push(strikes);
+        }
 
+        console.log(
+          "Player name: " +
+            playername +
+            " and Positions: " +
+            positionsarray +
+            " and Data: " +
+            dataarray +
+            " and Auth: " +
+            document.getElementById("password").value
+        );
 
-        testform.addEventListener('submit', async function(e){
-          e.preventDefault();
-          console.log("Sent Request");
+        const data = {
+          name: playername,
+          positions: positionsarray,
+          data: dataarray,
+          auth: document.getElementById("password").value,
+        };
 
-          var playername = document.getElementById('name').value.toLowerCase();
-          var positionsarray = [];
-          var dataarray = [];
+        console.log("Data: " + JSON.stringify(data));
 
-          if (document.getElementById('points').value != "") {
-            gamepoints = document.getElementById('points').value;
-            positionsarray.push("gamepoints");
-            dataarray.push(gamepoints);
-          }
+        const options = {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        };
 
-          if (document.getElementById('sets').value != "") {
-            setsplayed = document.getElementById('sets').value;
-            positionsarray.push("setsplayed");
-            dataarray.push(setsplayed);
-          }
+        const response = await fetch("/api/updatePlayer", options);
+        const resdata = await response.json();
+        console.log(resdata);
+        if (resdata == "Unauthorized") {
+          document.getElementById("password").value = "";
+        } else {
+          document.getElementById("name").value = "";
+          document.getElementById("points").value = "";
+          document.getElementById("sets").value = "";
+          document.getElementById("wins").value = "";
+          document.getElementById("losses").value = "";
+          document.getElementById("bonuses").value = "";
+          document.getElementById("total").value = "";
+          document.getElementById("strikes").value = "";
+        }
+      });
+    </script>
 
-          if (document.getElementById('wins').value != "") {
-            gamewins = document.getElementById('wins').value;
-            positionsarray.push("gamewins");
-            dataarray.push(gamewins);
-          }
+    <h1><br />Get player data</h1>
 
-          if (document.getElementById('losses').value != "") {
-            gamelosses = document.getElementById('losses').value;
-            positionsarray.push("gamelosses");
-            dataarray.push(gamelosses);
-          }
+    <form class="form2" id="form2">
+      <label for="lookupname">Player Name</label><br />
+      <input type="text" name="lookupname" id="lookupname" /> <br />
+      <button type="submit">Submit</button>
+    </form>
+    <p1>The resulting data will appear below</p1>
 
-          if (document.getElementById('bonuses').value != "") {
-            bonuses = document.getElementById('bonuses').value;
-            positionsarray.push("bonuses");
-            dataarray.push(bonuses);
-          }
+    <table id="playerdata">
+      <tr>
+        <th>Gang Member</th>
+        <th>Game Points</th>
+        <th>Sets Played</th>
+        <th>Game Wins</th>
+        <th>Game Losses</th>
+        <th>Bonuses</th>
+        <th>Total Points</th>
+        <th>STRIKES</th>
+      </tr>
+    </table>
 
-          if (document.getElementById('total').value != "") {
-            totalpoints = document.getElementById('total').value;
-            positionsarray.push("totalpoints");
-            dataarray.push(totalpoints);
-          }
+    <script>
+      const getform = document.getElementById("form2");
+      console.log("Got form");
 
-          if (document.getElementById('strikes').value != "") {
-            strikes = document.getElementById('strikes').value;
-            positionsarray.push("strikes");
-            dataarray.push(strikes);
-          }
+      getform.addEventListener("submit", async function (e) {
+        e.preventDefault();
+        console.log("Sent Request");
 
-          console.log("Player name: " + playername + " and Positions: " + positionsarray + " and Data: " + dataarray + " and Auth: " + document.getElementById('password').value);
+        var lookupname = document
+          .getElementById("lookupname")
+          .value.toLowerCase();
 
-          const data = {
-                      name: playername,
-                      positions: positionsarray,
-                      data: dataarray,
-                      auth: document.getElementById('password').value,
-                       }; 
-                      
-          console.log("Data: " + JSON.stringify(data));
+        const response = await fetch("/api/players?name=" + lookupname);
+        const resdata = await response.json();
+        console.log(resdata);
 
-          const options = {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-          };
-          
-          
-          const response = await fetch('/api/updatePlayer', options);
-          const resdata = await response.json();
-          console.log(resdata);
-          if (resdata == "Unauthorized"){
-            document.getElementById('password').value = ""
-          }
-          else {
-            document.getElementById('name').value = ""
-            document.getElementById('points').value = ""
-            document.getElementById('sets').value = ""
-            document.getElementById('wins').value = ""
-            document.getElementById('losses').value = ""
-            document.getElementById('bonuses').value = ""
-            document.getElementById('total').value = ""
-            document.getElementById('strikes').value = ""
-          }
-        });
-      </script>
+        var table = document.getElementById("playerdata");
 
-      <h1><br>Get player data</h1>
+        const row = document.createElement("tr");
+        const name = document.createElement("td");
+        const points = document.createElement("td");
+        const sets = document.createElement("td");
+        const wins = document.createElement("td");
+        const losses = document.createElement("td");
+        const bonuses = document.createElement("td");
+        const total = document.createElement("td");
+        const strikes = document.createElement("td");
 
-          <form class="form" id="form2">
+        name.textContent = resdata[0].playername;
+        points.textContent = resdata[0].gamepoints;
+        sets.textContent = resdata[0].setsplayed;
+        wins.textContent = resdata[0].gamewins;
+        losses.textContent = resdata[0].gamelosses;
+        bonuses.textContent = resdata[0].bonuses;
+        total.textContent = resdata[0].totalpoints;
+        strikes.textContent = resdata[0].strikes;
 
-            <label for="lookupname">Player Name</label><br>
-            <input type="text" name="lookupname" id="lookupname"> <br>
-            <button type="submit">Submit</button>
-
-          </form>
-          <p1>The resulting data will appear below</p1>
-         
-          <table id="playerdata"> 
-              <tr>
-                <th>Gang Member</th>
-                <th>Game Points</th>
-                <th>Sets Played</th>
-                <th>Game Wins</th>
-                <th>Game Losses</th>
-                <th>Bonuses</th>
-                <th>Total Points</th>
-                <th>STRIKES</th>
-              </tr>
-          </table>
-
-          <script>
-
-            const getform = document.getElementById("form2");
-            console.log("Got form");
-
-
-            getform.addEventListener('submit', async function(e){
-              e.preventDefault();
-              console.log("Sent Request");
-              
-              var lookupname = document.getElementById("lookupname").value.toLowerCase();
-
-              const response = await fetch('/api/players?name=' + lookupname);
-              const resdata = await response.json();
-              console.log(resdata);
-
-              var table = document.getElementById('playerdata');
-
-              const row = document.createElement('tr');
-              const name = document.createElement('td');
-              const points = document.createElement('td');
-              const sets = document.createElement('td');
-              const wins = document.createElement('td');
-              const losses = document.createElement('td');
-              const bonuses = document.createElement('td');
-              const total = document.createElement('td');
-              const strikes = document.createElement('td');
-
-              name.textContent = resdata[0].playername;
-              points.textContent = resdata[0].gamepoints;
-              sets.textContent = resdata[0].setsplayed;
-              wins.textContent = resdata[0].gamewins;
-              losses.textContent = resdata[0].gamelosses;
-              bonuses.textContent = resdata[0].bonuses;
-              total.textContent = resdata[0].totalpoints;
-              strikes.textContent = resdata[0].strikes;
-
-              row.append(name, points, sets, wins, losses, bonuses, total, strikes);
-              table.appendChild(row);
-
-              });
-              </script>
-      </body>
-
+        row.append(name, points, sets, wins, losses, bonuses, total, strikes);
+        table.appendChild(row);
+      });
+    </script>
+  </body>
 </html>
