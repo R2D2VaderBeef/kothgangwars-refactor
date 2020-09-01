@@ -20,7 +20,7 @@ if (process.env.isHeroku) {
 					},
 					{
 						"name": "Time",
-						"value": date.getYear() + "-" + ("0" + (date.getMonth() + 1)).slice(-2) + "-" + ("0" + date.getDate()).slice(-2) + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds(),
+						"value": ("0" + (date.getMonth() + 1)).slice(-2) + "-" + ("0" + date.getDate()).slice(-2) + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds(),
 						"inline": true
 					}
 				]
