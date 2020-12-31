@@ -20,7 +20,7 @@ if (process.env.isHeroku) {
 					},
 					{
 						"name": "Time",
-						"value": "2020-" + ("0" + (date.getMonth() + 1)).slice(-2) + "-" + ("0" + date.getDate()).slice(-2) + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds(),
+						"value": "2021-" + ("0" + (date.getMonth() + 1)).slice(-2) + "-" + ("0" + date.getDate()).slice(-2) + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds(),
 						"inline": true
 					}
 				]
@@ -39,7 +39,7 @@ if (process.env.isHeroku) {
 // logging requests, always keep on top
 app.use(function (req, res, next) {
   console.log(
-    "Request recieved at " + Date.now() + " to " + req.url + " from " + req.ip
+    "Request recieved at " + Date.now() + " to " + req.url + " from " + req.headers["x-forwarded-for"]
   );
   next();
 });
